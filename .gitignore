@@ -1,11 +1,7 @@
 *.sw*
 *~
 build/
-
-
+www/
+vendor/
 node_modules/
-
-src/app/config.js
-
 .idea
-/bin/assets/Guajira-Appc.js

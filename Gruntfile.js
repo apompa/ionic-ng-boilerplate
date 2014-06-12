@@ -345,6 +345,7 @@ module.exports = function ( grunt ) {
           asi:true,
           loopfunc:true,
         curly: true,
+          "-W065": true,
         immed: true,
         newcap: true,
         noarg: true,
