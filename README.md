@@ -33,10 +33,10 @@ Notes:
 
 Android development:
 
- You will need JAVA_HOME, ANT_HOME, ANDROID_HOME environments variables pointing to installation directories.
- You will need to add to PATH JAVA_HOME/bin, ANT_HOME/bin, ANDROID_HOME/tools, ANDROID_HOME/platform-tools 
- Remember to install the latest Android SDK with the SDK Manager.
- You may need OEM Drivers to be able to run app on phone with (ionic run android)
+ You will need JAVA_HOME, ANT_HOME, ANDROID_HOME environments variables pointing to installation directories.<br>
+ You will need to add to PATH JAVA_HOME/bin, ANT_HOME/bin, ANDROID_HOME/tools, ANDROID_HOME/platform-tools.<br>
+ Remember to install the latest Android SDK with the SDK Manager.<br>
+ You may need OEM Drivers to be able to run app on phone with (ionic run android).<br>
 
 Happy hacking!
 
