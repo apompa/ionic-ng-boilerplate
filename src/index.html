@@ -1,54 +1,93 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en">
 <head>
-    <meta name="google-site-verification" content="m1Ta0ZhuHFfBhxstxeOmUCGUV5k6QGPyCslzuKawe8Q"/>
     <meta charset="utf-8">
     <title>Ionic-ng-boilerplate</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="/<%= file %>"/>
+    <link rel="stylesheet" type="text/css" href="<%= file %>"/>
     <% }); %>
 
-    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="/<%= file %>"></script>
+    <script type="text/javascript" src="<%= file %>"></script>
     <% }); %>
 
     <!-- 404 during development -->
     <script src="cordova.js"></script>
 
-    <!-- uses Open Sans Google Font -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,100,700,300,600' rel='stylesheet' type='text/css'>
-
 </head>
-<!--<body ng-controller="AppCtrl" class="auth-demo-application check-user">-->
-<body ng-controller="AppCtrl" class="">
+<body ng-app="todo" ng-controller="TodoCtrl">
+<ion-side-menus>
 
-<div ng-include="'header.tpl.html'"></div>
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <ion-header-bar class="bar-dark">
+            <button class="button button-icon" ng-click="toggleProjects()">
+                <i class="icon ion-navicon"></i>
+            </button>
+            <h1 class="title">{{activeProject.title}}</h1>
+            <!-- New Task button-->
+            <button class="button button-icon" ng-click="newTask()">
+                <i class="icon ion-compose"></i>
+            </button>
+        </ion-header-bar>
+        <ion-content scroll="false">
+            <ion-list>
+                <ion-item ng-repeat="task in activeProject.tasks">
+                    {{task.title}}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu-content>
 
-<div class="container-fluid">
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar-dark">
+            <h1 class="title">Projects</h1>
+            <button class="button button-icon ion-plus" ng-click="newProject()">
+            </button>
+        </ion-header-bar>
+        <ion-content scroll="false">
+            <ion-list>
+                <ion-item ng-repeat="project in projects" ng-click="selectProject(project, $index)" ng-class="{active: activeProject == project}">
+                    {{project.title}}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
 
-    <!-- Loader -->
-    <div class="loaderWrapper" ng-show="hasPendingRequests()">
-        <!--<img src="/assets/img/spinner.gif">-->
-        <div id="facebookG">
-            <div class="facebookBlocks">
-                <div id="blockG_1" class="facebook_blockG"></div>
-                <div id="blockG_2" class="facebook_blockG"></div>
-                <div id="blockG_3" class="facebook_blockG"></div>
-            </div>
-            <div class="text">Cargando...</div>
+    <script id="new-task.html" type="text/ng-template">
+
+        <div class="modal">
+
+            <!-- Modal header bar -->
+            <ion-header-bar class="bar-secondary">
+                <h1 class="title">New Task</h1>
+                <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+            </ion-header-bar>
+
+            <!-- Modal content area -->
+            <ion-content>
+
+                <form ng-submit="createTask(task)">
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+                        </label>
+                    </div>
+                    <div class="padding">
+                        <button type="submit" class="button button-block button-positive">Create Task</button>
+                    </div>
+                </form>
+
+            </ion-content>
+
         </div>
-    </div>
 
-    <!--<div ng-view class="row"></div>-->
+    </script>
 
-    <div ui-view></div>
 
-</div>
-
-<div ng-include="'footer.tpl.html'"></div>
-
+</ion-side-menus>
 </body>
 </html>

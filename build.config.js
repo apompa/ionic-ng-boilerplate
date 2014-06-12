@@ -8,7 +8,7 @@ module.exports = {
      * completely built.
      */
     build_dir: 'build',
-    compile_dir: 'bin',
+    compile_dir: 'www',
     src_dir: 'src',
 
     /**
@@ -34,7 +34,7 @@ module.exports = {
         less: 'src/less/main.less'
     },
 
-    config_file: "Guajira-Appc",
+    config_file: "ionic-ng-boilerplate-config",
 
     exclude_files: {
         js: [ '!build/src/app/config.js']
@@ -69,40 +69,15 @@ module.exports = {
      */
     vendor_files: {
         js: [
-            'vendor/angular/angular.js',
-            'vendor/angular/angular-resource.js',
-            'vendor/angular/angular-route.js',
-            'vendor/angular-animate/angular-animate.js',
-
-            'vendor/jquery/jquery.js',
-            'vendor/bootstrap/dist/js/bootstrap.js',
-
-            'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-
-            'vendor/angular-file-upload/angular-file-upload.js',
-            'vendor/ngstorage/ngStorage.min.js',
-            'vendor/angular-easyfb/angular-easyfb.js',
-            'vendor/ng-map/ng-map.min.js',
-
-            'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
-            'vendor/angular-ui-router/release/angular-ui-router.js',
-            //'vendor/angular-ui-utils/modules/route/route.js',
-
-            'vendor/extras/hmac-sha256.js'
-            //'vendor/extras/http-auth-interceptor.js',
-            //'vendor/extras/kinetic-v4.5.5.min',
-            //'vendor/extras/simpleFacebookGraph.js'
-
+            'vendor/ionic/js/ionic.bundle.min.js'
         ],
         css: [
-            /*'vendor/bootstrap/dist/bootstrap.css'*/
-            'vendor/animateCss/animate.css'
+            'vendor/ionic/css/ionic.css'
         ],
         fonts: [
-            'vendor/fontawesome/fonts/*'
+            'vendor/ionic/fonts/*'
         ],
         assets: [
-
         ]
     }
 };
