@@ -12,6 +12,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
@@ -90,7 +91,8 @@ module.exports = function ( grunt ) {
 
     clean: {
           build: ['<%= build_dir %>'],
-          compile: ['<%= compile_dir %>']
+          compile: ['<%= compile_dir %>'],
+        aux: ['<%= build_dir %>/assets/sass.css']
       },
 
     /**
@@ -217,7 +219,9 @@ module.exports = function ( grunt ) {
       build_css: {
         src: [
           '<%= vendor_files.css %>',
+            '<%= build_dir %>/assets/sass.css',
             '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
+
         ],
           dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
       },
@@ -314,6 +318,27 @@ module.exports = function ( grunt ) {
         }
       }
     },
+
+      /**
+       * `grunt-contrib-sass` handles our SASS compilation and uglification automatically.
+       * Only our `main.sass` file is included in compilation; all other files
+       * must be imported from this file.
+       */
+      sass: {
+          build: {
+              files:  {
+                  '<%= build_dir %>/assets/sass.css': '<%= app_files.scss %>'
+              }
+          },
+          compile: {
+              files:  {
+                  '<%= build_dir %>/assets/sass.css': '<%= app_files.scss %>'
+              },
+              options: {
+                  style: "compressed"
+              }
+          }
+      },
 
     /**
      * `jshint` defines the rules of our linter as well as which files we
@@ -566,9 +591,14 @@ module.exports = function ( grunt ) {
        * When the CSS files change, we need to compile and minify them.
        */
       less: {
-        files: [ 'src/**/*.less' ],
-        tasks: [ 'less:build', 'concat:build_css' ]
-      },
+            files: [ 'src/**/*.less' ],
+            tasks: [ 'less:build', 'concat:build_css' ]
+        },
+
+        sass: {
+            files: [ 'src/**/*.scss' ],
+            tasks: [ 'sass:build', 'concat:build_css' ]
+        },
 
       /**
        * When a JavaScript unit test file changes, we only want to lint it and
@@ -621,8 +651,8 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean:build', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
-    'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets', 'copy:build_vendor_fonts',
+    'clean:build', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build', 'sass:build',
+    'concat:build_css', 'clean:aux', 'copy:build_app_assets', 'copy:build_vendor_assets', 'copy:build_vendor_fonts',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_htaccess', 'index:build', 'karmaconfig',
     'karma:continuous'
   ]);
@@ -632,7 +662,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'clean:compile', 'less:compile', 'concat:build_css', 'copy:compile_htaccess', 'copy:compile_php', 'copy:compile_config', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'clean:compile', 'less:compile', 'sass:compile', 'concat:build_css', 'clean:aux', 'copy:compile_htaccess', 'copy:compile_php', 'copy:compile_config', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
   /**

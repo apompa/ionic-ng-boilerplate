@@ -1,0 +1,30 @@
+/**
+ * This is our main variables file. It in turn imports the `variables` file from
+ * Twitter Bootstrap. We must include it last so we can overwrite any variable
+ * definitions in our imported stylesheets.
+ */
+
+@import 'variables.scss';
+
+
+/**
+* This is the main application stylesheet. It should include or import all
+* stylesheets used throughout the application as this is the only stylesheet in
+* the Grunt configuration that is automatically processed.
+*/
+
+@import '../../vendor/ionic/scss/ionic.scss';
+
+
+
+/**
+ * Now that all app-wide styles have been applied, we can load the styles for
+ * all the submodules and components we are using. 
+ *
+ * TODO: In a later version of this boilerplate, I'd like to automate this.
+ */
+
+/*
+@import '../app/home/home.scss';
+*/
+

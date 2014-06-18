@@ -31,7 +31,8 @@ module.exports = {
         ctpl: [ 'src/common/**/*.tpl.html' ],
 
         html: [ 'src/index.html' ],
-        less: 'src/less/main.less'
+        less: 'src/less/main.less',
+        scss: 'src/scss/main.scss'
     },
 
     config_file: "ionic-ng-boilerplate-config",
@@ -72,7 +73,7 @@ module.exports = {
             'vendor/ionic/js/ionic.bundle.min.js'
         ],
         css: [
-            'vendor/ionic/css/ionic.css'
+            /*'vendor/ionic/css/ionic.css'*/
         ],
         fonts: [
             'vendor/ionic/fonts/*'

@@ -16,6 +16,7 @@
     "devDependencies": {
         "grunt": "~0.4.1",
         "grunt-contrib-less": "~0.11.2",
+        "grunt-contrib-sass": "0.7.3",
         "grunt-contrib-clean": "~0.4.1",
         "grunt-contrib-copy": "~0.4.1",
         "grunt-contrib-jshint": "~0.4.3",
