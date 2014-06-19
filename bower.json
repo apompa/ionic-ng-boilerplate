@@ -1,8 +1,9 @@
 {
-    "name": "ng-boilerplate",
+    "name": "alta-cancha",
     "version": "0.3.1",
     "devDependencies": {
         "ionic": "driftyco/ionic-bower#1.0.0-beta.6",
+        "ngCordova": "0.1.1-alpha",
         "angular-mocks": "1.2.10"
     },
     "dependencies": {}

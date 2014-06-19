@@ -70,7 +70,8 @@ module.exports = {
      */
     vendor_files: {
         js: [
-            'vendor/ionic/js/ionic.bundle.min.js'
+            'vendor/ionic/js/ionic.bundle.min.js',
+            'vendor/ngCordova/dist/ng-cordova.js'
         ],
         css: [
             /*'vendor/ionic/css/ionic.css'*/
