@@ -5,3 +5,5 @@ www/
 vendor/
 node_modules/
 .idea
+platforms/
+plugins/
