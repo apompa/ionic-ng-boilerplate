@@ -12,6 +12,7 @@ Boilerplate for quickly start building ionic's apps. Based on ng-boilerplate by 
 
 Install Node.js and then:
 
+>
 ```sh
 $ git clone https://github.com/apompa/ionic-ng-boilerplate.git
 $ cd ionic-ng-boilerplate
@@ -21,9 +22,11 @@ $ bower install
 $ grunt watch
 $ open `file:///path/to/ionic-ng-boilerplate/build/index.html` in your browser.
 $ grunt (this command executes grunt build and then grunt compile)
-$ ionic platform android
-$ ionic run android (to run on smartphone)
-$ ionic emulate android (to run on emulator)
+$ ionic platform android ios (to add mobile platform)
+$ ionic run android (to run on android phone)
+$ ionic emulate android (to run on android emulator)
+$ ionic run ios (to run on iPhone)
+$ ionic emulate ios (to run on ios emulator)
 ```
 
 Notes:
@@ -111,6 +114,7 @@ ionic-ng-boilerplate/
   |- module.prefix
   |- module.suffix
   |- package.json
+  |- ionic.project
 ```
 
 What follows is a brief description of each entry, but most directories contain
@@ -135,6 +139,7 @@ learn more.
   self-executing anonymous function to ensure no clashes with other libraries.
 - `package.json` - metadata about the app, used by NPM and our build script. Our
   NPM dependencies are listed here.
+- `ionic.project` - ionic project configuration file.
 
 ### Detailed Installation
 
